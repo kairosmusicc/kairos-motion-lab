@@ -1,0 +1,17 @@
+{
+  "source": "Local copies from kairosmusicc/kairos-experience; the source project is unchanged.",
+  "assets": [
+    {
+      "path": "images/kairos-cover.jpg",
+      "sha256": "48c823c79d9357bb4cd97b90172a01e0cf45f7bf5d83685dd855ad7af958a825"
+    },
+    {
+      "path": "phone/messages.png",
+      "sha256": "5ec1f45c0d08ee5ae986d455c4068356123751986559f1d1a6eb8d768011ba56"
+    },
+    {
+      "path": "phone/files.png",
+      "sha256": "ed4112474fb0b9efb381f0bba5cf56b961dc88ebfd24f1552301914da4f03250"
+    }
+  ]
+}

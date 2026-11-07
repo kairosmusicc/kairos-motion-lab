@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+.micro {
+  font-family: Evidence;
+  font-size: 19px;
+  line-height: 1.4;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}

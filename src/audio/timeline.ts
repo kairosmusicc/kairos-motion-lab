@@ -1,0 +1,61 @@
+/** Seconds, provisional until the real master is analysed. No implied BPM or audio sync. */
+export const beats = {
+  hookIn: 0,
+  firstImpact: 1.4,
+  puzzleStart: 2.1,
+  suspenseHold: 4.4,
+  secondImpact: 5.9,
+  finalQuestion: 7.7,
+  end: 9.5,
+} as const;
+
+/** Every meaningful onset, pause and graphic cut lives here, never inside JSX. */
+export const cues = {
+  firstTitle: beats.hookIn + 0.12,
+  clueTitle: beats.hookIn + 0.54,
+  hookBreak: beats.firstImpact,
+  evidenceIn: beats.firstImpact + 0.16,
+  dateIn: beats.firstImpact + 0.3,
+  coverIn: beats.firstImpact + 0.42,
+  fileIn: beats.puzzleStart,
+  messageIn: beats.puzzleStart + 0.2,
+  redactionIn: beats.puzzleStart + 0.52,
+  lineIn: beats.puzzleStart + 0.64,
+  boardSettled: beats.puzzleStart + 0.94,
+  markerIn: beats.suspenseHold,
+  nobodyTitle: beats.suspenseHold + 0.14,
+  unnoticedTitle: beats.suspenseHold + 0.52,
+  puzzleGather: beats.secondImpact,
+  slashCross: beats.secondImpact + 0.38,
+  lockClose: beats.secondImpact + 0.65,
+  nearReveal: beats.secondImpact + 1.02,
+  obstruction: beats.finalQuestion - 0.28,
+  questionIn: beats.finalQuestion,
+  ctaIn: beats.finalQuestion + 0.58,
+  endFade: beats.end - 0.18,
+} as const;
+
+export const durations = {
+  titleReveal: 0.34,
+  cardReveal: 0.38,
+  markerDraw: 0.44,
+  interruption: 0.14,
+  labelIn: 0.18,
+  softIn: 0.2,
+  lockClose: 0.22,
+  ruleDraw: 0.24,
+  ctaReveal: 0.26,
+  obstruction: 0.28,
+  waveFlatten: 0.35,
+  boardExit: 0.36,
+  hookBreak: 0.38,
+  slashCross: 0.38,
+  gather: 0.48,
+  lineDraw: 0.55,
+  waveformDraw: 0.6,
+  scan: 1.1,
+  holdIn: 0.15,
+  puzzleIn: 0.1,
+  redactionSweep: 0.16,
+} as const;
+export const masterSpec = { width: 1080, height: 1920, fps: 30 } as const;

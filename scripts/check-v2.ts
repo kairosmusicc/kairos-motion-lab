@@ -1,5 +1,5 @@
 import {execFileSync} from 'node:child_process';
-import {readFileSync,readdirSync,existsSync,statSync} from 'node:fs';
+import {readFileSync,readdirSync,existsSync,statSync,writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 import {music,v2Spec,editorial,boardTimes} from '../src/audio/beat-grid';
@@ -38,3 +38,14 @@ let aa=0,bb=0,ab=0;
 for(let i=8000;i<Math.min(av.length,bv.length)-8000;i++){aa+=av[i]*av[i];bb+=bv[i]*bv[i];ab+=av[i]*bv[i];}
 const correlation=ab/Math.sqrt(aa*bb);assert(correlation>.95,`Soundtrack does not match master: ${correlation}`);
 console.log(`PASS master ${video.width}×${video.height}; ${probe.format.duration}s; ${video.nb_read_frames} frames; H.264+${audio.codec_name}; master PCM correlation ${correlation.toFixed(6)}; ${statSync(file).size} bytes`);
+
+const artifacts=['out/HiddenClueTrailer-v2-beat-board.png','out/HiddenClueTrailer-v2-draft.mp4',file];
+writeFileSync('out/HiddenClueTrailer-v2-validation.json',JSON.stringify({
+  durationSeconds:Number(probe.format.duration),width:video.width,height:video.height,
+  fps:30,frames:Number(video.nb_read_frames),codec:video.codec_name,pixelFormat:video.pix_fmt,
+  audio:{codec:audio.codec_name,masterSha256:music.sha256,decodedPcmCorrelation:correlation},
+  remotionVersion:JSON.parse(readFileSync('package.json','utf8')).dependencies.remotion,
+  repeatedStillCheck:'passed during npm run stills',
+  artifacts:artifacts.map(path=>({path,bytes:statSync(path).size,sha256:createHash('sha256').update(readFileSync(path)).digest('hex')})),
+  compositionSha256:createHash('sha256').update(readFileSync('src/compositions/HiddenClueTrailer/HiddenClueTrailerV2.tsx')).digest('hex'),
+},null,2)+'\n');

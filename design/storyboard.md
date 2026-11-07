@@ -14,13 +14,13 @@ Times below are measured master events (nearest 30fps rendering frame). All conn
 | 19.835–24.045 | Rail breaks; PERSONNE grows from the frame edge. NE L'A REMARQUÉ. follows as two readable lines. | Prediction interrupted by typography, not a new title card. |
 | 24.045–25.542 | Hold headline with subtle edge / trace movement. | Processing time before dense engine. |
 | 25.542 / 26.440 / 27.937 | Headline occluded; frame folds; trace collapses to a Home-Indicator-like rule then expands into a crop. | Repetition with mutation. Macro / micro / meso contrast. |
-| 29.433 / 31.838 / 33.644 | Cover is a tile; date returns separated by a literal slash, frame becomes a grid and opens again. | Never form or explain a code. Geometric reasoning stays incomplete. |
+| 29.433 / 31.838 / 33.644 | Cover is a tile; date returns separated by a literal slash, frame becomes an image-type aperture, then a six-cell crop grid and opens again. | Never form or explain a code. Geometric reasoning stays incomplete. |
 | 35.140 / 37.545 / 38.443 | Pieces converge into a tall locked archive. | Density reduces. The object gains visual weight and scale. |
 | 40.837 | Date reappears as the frame closes in. | Visual memory, not a new clue. |
 | 42.334 | All geometry compresses toward the rule. | Anticipation. |
-| 42.793 | Lock and crop snap together; question starts through the closing mask. | Peak before deletion. |
+| 42.793 | Lock and crop snap together; the system is deleted before the question starts. | Peak before deletion. |
 | 43.840 | Near-black; question finishes; domain replaces the archival label. | Only question and domain remain; no extra CTA. |
 | 44.738 → 44.800 | Last actual hit; hard visual end with short de-click envelope. | Open loop; final cut stays under 45 seconds. |
 
 ## Representative stills
-0.9, 3.8, 6.85, 10.8, 14.6, 17.8, 20.8, 24.5, 26.8, 28.6, 31.9, 34.1, 36.3, 39.2, 41.5, 42.65, 43.3, 44.35 seconds. Build one contact sheet, then inspect individual phone-size frames.
+0.9, 3.8, 6.85, 11.1, 14.6, 17.8, 20.8, 24.5, 26.8, 28.6, 32.5, 34.1, 36.3, 39.2, 41.5, 42.65, 43.3, 44.35 seconds. Build one contact sheet, then inspect individual phone-size frames.

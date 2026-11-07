@@ -1,0 +1,44 @@
+{
+  "composition": "HiddenClueTrailer-v2",
+  "spec": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration": 44.8,
+    "frames": 1344
+  },
+  "scale": 1,
+  "props": {
+    "hookLine1": "LE FILM AVAIT UN INDICE.",
+    "hookLine2": "PERSONNE NE L'A REMARQUÉ.",
+    "finalQuestion": "TU L'AS VU ?",
+    "cta": "kairosarchives.com",
+    "suspenseLevel": 0.8,
+    "variant": "v2",
+    "audioSrc": "assets/audio/tension-suspense.mp3",
+    "audioOffsetSeconds": 0,
+    "audioGain": 0.65
+  },
+  "audioSha256": "2a7e575b7f827e3db33dca0d973641c040500170fe2246747d236cbab242d00b",
+  "events": {
+    "openingHit": 0.638549,
+    "firstReveal": 6.335601,
+    "systemOpen": 10.236735,
+    "falseResolution": 15.943764,
+    "destabilize": 19.834921,
+    "unnoticed": 24.045351,
+    "puzzleStart": 25.54195,
+    "puzzleTurn": 26.439909,
+    "puzzleFold": 27.936508,
+    "puzzlePeak": 33.643537,
+    "compression": 35.140136,
+    "compressAgain": 37.544671,
+    "closeIn": 38.44263,
+    "finalCluster": 40.837188,
+    "finalCompress": 42.333787,
+    "finalSnap": 42.792744,
+    "collapse": 43.840363,
+    "finalImpact": 44.738322
+  },
+  "realAudio": true
+}

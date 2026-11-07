@@ -18,7 +18,7 @@ npm run render
 npm run check:v2
 ```
 
-The default renderer uses Remotion's bundled browser (`npx remotion browser ensure`). In this managed environment the download host remotion.media is blocked. If a user explicitly authorizes a compatible system Chromium, set `REMOTION_BROWSER_EXECUTABLE=/usr/bin/chromium` for the render commands. No system-browser override is selected automatically by the V2 script.
+The default renderer uses Remotion's bundled browser (`npx remotion browser ensure`). In this managed environment the download host remotion.media is blocked. The user explicitly authorized installed Chromium for this task. In this managed environment, run `export REMOTION_BROWSER_EXECUTABLE=/usr/bin/chromium` before `npm run stills`, `npm run draft` and `npm run render`. No system-browser override is selected automatically by the V2 script.
 
 Outputs:
 
@@ -26,8 +26,11 @@ Outputs:
 - `out/HiddenClueTrailer-v2-draft.mp4` — 540×960, real soundtrack, 30fps, 44.8 seconds.
 - `out/HiddenClueTrailer-v2.mp4` — H.264 / yuv420p / AAC, 1080×1920 / 30fps / 44.8 seconds, FFmpeg faststart remux.
 - Each video has a manifest with actual master SHA-256, props and measured musical events.
+- `out/HiddenClueTrailer-v2-validation.json` records final ffprobe facts, audio correlation and artifact hashes.
 
-V2 refuses a missing, silent-substitute or changed master. `npm run check:v2` checks dimensions, codec, frame count, duration and the actual decoded soundtrack against the master PCM (correlation >0.95). It also checks the props, central event bounds, source determinism and narrative constraints. These checks do not replace creative review of the board and sound-enabled draft.
+The three V2 delivery artifacts and manifests are versioned on `motion-v2`; temporary review sheets, first-pass exports and V1 output remain ignored.
+
+V2 refuses a missing, silent-substitute or changed master. `npm run check:v2` checks dimensions, codec, frame count, duration and the actual decoded soundtrack against the master PCM (correlation >0.95). It also checks the props, central event bounds, source determinism and narrative constraints. These checks do not replace creative review of the board and sound-enabled draft. `python scripts/review-draft.py` samples the actual decoded MP4 at overview and transition intervals; `python scripts/playback-smoke.py` tests the native Chromium player against a local `python -m http.server 4178 --bind 127.0.0.1`. The review log records visible defects and resulting changes.
 
 ## Analysis / design
 
@@ -48,7 +51,7 @@ npm run analyze
 
 ## Props / variants
 
-The Zod schema and defaults live in `src/experiments/hooks.ts`. Keep `hookLine1`, `hookLine2`, `finalQuestion`, `cta`, `variant`, `suspenseLevel`. Audio properties choose the local analyzed master, start offset and gain. The art-directed V2 splits the default hook along semantic phrases; alternate text remains data and is not embedded as the main headline in JSX.
+The Zod schema and defaults live in `src/experiments/hooks.ts`. Keep `hookLine1`, `hookLine2`, `finalQuestion`, `cta`, `variant`, `suspenseLevel`. Audio properties choose the local analyzed master, start offset and gain. The art-directed V2 splits the default hook along semantic phrases; alternate text remains data and is not embedded as the main headline in JSX. Root.tsx has literal Studio defaults so its editor can save changes; the CLI uses the variant registry or `--props`. To export Studio-edited text through the CLI, save the props JSON and pass it with `--props`.
 
 ```sh
 npm run render -- --props ./props.json
@@ -59,7 +62,7 @@ Do not change the V2 music without rerunning analysis and designing the synchron
 
 ## Structure / reuse
 
-V2 reuses `ImageCrop`, `ConnectorLine`, `Lock`, `FilmGrain`, the props schema, composition registration and render/FFmpeg approach. Added `MorphFrame` (persistent changing edge), `MaskedType` (cropped typography), `EvidenceLabel` (shared annotation style) and `AudioTrace` (real PCM RMS window). Motion interpolation is stateless and lives in `src/motion/choreography.ts`. Every visual state derives from a Remotion frame. No runtime timers, unseeded randomness or CSS animations. No Three.js or extra animation engine.
+V2 reuses `ImageCrop`, `ConnectorLine`, `Lock`, `FilmGrain`, the props schema, composition registration and render/FFmpeg approach. Added `MorphFrame` (persistent changing edge), `MaskedType` (cropped typography), `EvidenceLabel` (shared annotation style), `AudioTrace` (real PCM RMS window) and `CoverTransform` (the same genuine artwork as strips, type aperture and six crop cells). Motion interpolation is stateless and lives in `src/motion/choreography.ts`. Every visual state derives from a Remotion frame. No runtime timers, unseeded randomness or CSS animations. No Three.js or extra animation engine.
 
 V1 remains preserved in Git history at `3a6908e`; its legacy render/check scripts are retained for the prototype. V1's synthetic waveform and implied clock detail are not used in V2. V2 contains no film footage, no fabricated private messages, no solved password or unsupported film explanation.
 

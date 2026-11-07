@@ -23,6 +23,7 @@ const draft=args.includes('--draft');
 const stills=args.includes('--stills-only');
 const scale=draft?.5:1;
 if(stills){
+  rmSync(path.join(out,'v2-stills'),{recursive:true,force:true});
   mkdirSync(path.join(out,'v2-stills'),{recursive:true});
   for(const seconds of boardTimes){
     await renderStill({serveUrl,composition,inputProps:props,browserExecutable,frame:Math.round(seconds*composition.fps),scale:.5,imageFormat:'png',output:path.join(out,'v2-stills',`${seconds.toFixed(2)}.png`)});
@@ -33,12 +34,13 @@ if(stills){
   const digest=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex');
   if(digest(repeat)!==digest(path.join(out,'v2-stills',`${boardTimes[4].toFixed(2)}.png`)))throw Error('Nondeterministic frame');
   rmSync(repeat);
+  writeFileSync(path.join(out,'v2-stills','frames.json'),JSON.stringify(boardTimes));
   execFileSync('python',['scripts/contact-sheet.py'],{stdio:'inherit'});
 }else{
   const target=path.join(out,`HiddenClueTrailer-v2${draft?'-draft':''}.mp4`);
   const intermediate=path.join(out,`.v2-${draft?'draft':'master'}.mp4`);
   let last=-1;
-  await renderMedia({serveUrl,composition,inputProps:props,browserExecutable,outputLocation:intermediate,codec:'h264',pixelFormat:'yuv420p',crf:draft?24:17,scale,imageFormat:'jpeg',jpegQuality:draft?85:95,concurrency:2,
+  await renderMedia({serveUrl,composition,inputProps:props,browserExecutable,outputLocation:intermediate,codec:'h264',pixelFormat:'yuv420p',crf:draft?24:17,scale,imageFormat:draft?'jpeg':'png',jpegQuality:draft?85:undefined,concurrency:2,
     onProgress:({progress})=>{const p=Math.floor(progress*20);if(p!==last){console.log(`${draft?'Draft':'Master'} ${Math.min(p*5,100)}%`);last=p;}}});
   execFileSync('ffmpeg',['-y','-v','error','-i',intermediate,'-map','0:v:0','-map','0:a:0','-c','copy','-movflags','+faststart','-metadata','title=KAIROS — Hidden Clue V2',target],{stdio:'inherit'});
   rmSync(intermediate);

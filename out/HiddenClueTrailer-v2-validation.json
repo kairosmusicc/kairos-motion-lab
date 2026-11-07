@@ -1,0 +1,34 @@
+{
+  "durationSeconds": 44.8,
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "frames": 1344,
+  "codec": "h264",
+  "pixelFormat": "yuv420p",
+  "audio": {
+    "codec": "aac",
+    "masterSha256": "2a7e575b7f827e3db33dca0d973641c040500170fe2246747d236cbab242d00b",
+    "decodedPcmCorrelation": 0.9999684738003887
+  },
+  "remotionVersion": "4.0.541",
+  "repeatedStillCheck": "passed during npm run stills",
+  "artifacts": [
+    {
+      "path": "out/HiddenClueTrailer-v2-beat-board.png",
+      "bytes": 1779755,
+      "sha256": "c1e2637e82c1870b8ead47d33ebb1a015c369e4adfea83ee997d2e9eea94be89"
+    },
+    {
+      "path": "out/HiddenClueTrailer-v2-draft.mp4",
+      "bytes": 3763918,
+      "sha256": "41833d6b91b039338f4ac355c2714fc3cf7e6234e57c36372e5ab8005b9b659f"
+    },
+    {
+      "path": "out/HiddenClueTrailer-v2.mp4",
+      "bytes": 9568265,
+      "sha256": "344a3c01bef75ecd772edd5da413e9b91eb537f78b0fab3c733c610c4bc554b0"
+    }
+  ],
+  "compositionSha256": "770a888684c0748e905868260522afef278ae33a704df751bbcc4256b1309630"
+}

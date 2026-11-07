@@ -10,3 +10,9 @@ out/*
 __pycache__/
 *.pyc
 .agents/
+!out/HiddenClueTrailer-v2.mp4
+!out/HiddenClueTrailer-v2-draft.mp4
+!out/HiddenClueTrailer-v2-beat-board.png
+!out/HiddenClueTrailer-v2-manifest.json
+!out/HiddenClueTrailer-v2-draft-manifest.json
+!out/HiddenClueTrailer-v2-validation.json

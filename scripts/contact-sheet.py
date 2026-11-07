@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
 import json
 root=Path(__file__).resolve().parents[1]
-times=[.9,3.8,6.85,10.8,14.6,17.8,20.8,24.5,26.8,28.6,31.9,34.1,36.3,39.2,41.5,42.65,43.3,44.35]
+times=json.loads((root/'out/v2-stills/frames.json').read_text())
 w,h,gap=270,480,22
 sheet=Image.new('RGB',(6*w+7*gap,3*(h+42)+4*gap),'#181b18')
 d=ImageDraw.Draw(sheet)

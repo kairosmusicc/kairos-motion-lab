@@ -20,7 +20,7 @@ export const editorial = {
   tile: grid.transients.find(t => Math.abs(t.time - 29.433) < .05)!.time,
   grid: grid.transients.find(t => Math.abs(t.time - 31.838) < .05)!.time,
   converge: beats.compression,
-  question: beats.finalSnap + .12,
+  question: beats.finalSnap + .20,
   domain: beats.collapse,
 };
-export const boardTimes = [.9,3.8,6.85,10.8,14.6,17.8,20.8,24.5,26.8,28.6,31.9,34.1,36.3,39.2,41.5,42.65,43.3,44.35];
+export const boardTimes = [.9,3.8,6.85,11.1,14.6,17.8,20.8,24.5,26.8,28.6,32.5,34.1,36.3,39.2,41.5,42.65,43.3,44.35];

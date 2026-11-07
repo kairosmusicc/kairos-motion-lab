@@ -1,69 +1,70 @@
-# KAIROS MOTION LAB — V1
+# KAIROS MOTION LAB
 
-Studio vidéo **indépendant** en React / TypeScript / Remotion. Première composition : `HiddenClueTrailer`, 1080 × 1920, 30 fps, 285 frames, **9,5 secondes**. Le site `kairos-experience` n’est ni modifié ni utilisé au runtime.
+Independent React / TypeScript / Remotion studio. **V2: HiddenClueTrailer-v2**, 1080×1920, 30fps, 1344 frames / 44.800 seconds. V1 remains under the Studio `Prototype` folder, with its original code and 9.5-second timeline. This repository never imports runtime assets from kairos-experience and does not modify that project.
 
-## Démarrer
+## Install / preview / render
 
-Prérequis : Node 22+ (testé sur Node 24), FFmpeg/ffprobe sur PATH et un Chrome/Chromium compatible. Le script utilise `/usr/bin/chromium` s’il existe ; sinon Remotion utilise sa gestion de navigateur. `CHROME_PATH` peut préciser un exécutable local.
+Node 22+, npm, FFmpeg and Python 3 with Pillow for the contact sheet. Remotion packages are pinned to **4.0.541**. Fonts and the genuine music master are local.
 
 ```sh
-npm ci
-npm run studio
+npm install
 npm run typecheck
+npm run studio -- --no-open
+# Open the exact localhost URL printed by Studio.
+npm run check:v2 -- --source-only
+npm run stills
+npm run draft
 npm run render
-npm run check
+npm run check:v2
 ```
 
-Le Studio ouvre la timeline Remotion, avec scrubbing et édition des props. Aucun service, token ou API externe n’est nécessaire. `npm run render` produit `out/HiddenClueTrailer-v1.mp4`, cinq PNG de contrôle et un manifeste. FFmpeg finalise le conteneur MP4 en faststart, sans seconde compression des images. Le master est H.264 / yuv420p pour lecture mobile. Les rendus et `node_modules` sont ignorés par `.gitignore`.
+The default renderer uses Remotion's bundled browser (`npx remotion browser ensure`). In this managed environment the download host remotion.media is blocked. If a user explicitly authorizes a compatible system Chromium, set `REMOTION_BROWSER_EXECUTABLE=/usr/bin/chromium` for the render commands. No system-browser override is selected automatically by the V2 script.
+
+Outputs:
+
+- `out/HiddenClueTrailer-v2-beat-board.png` — 18 measured-state thumbnails, includes same-frame determinism check.
+- `out/HiddenClueTrailer-v2-draft.mp4` — 540×960, real soundtrack, 30fps, 44.8 seconds.
+- `out/HiddenClueTrailer-v2.mp4` — H.264 / yuv420p / AAC, 1080×1920 / 30fps / 44.8 seconds, FFmpeg faststart remux.
+- Each video has a manifest with actual master SHA-256, props and measured musical events.
+
+V2 refuses a missing, silent-substitute or changed master. `npm run check:v2` checks dimensions, codec, frame count, duration and the actual decoded soundtrack against the master PCM (correlation >0.95). It also checks the props, central event bounds, source determinism and narrative constraints. These checks do not replace creative review of the board and sound-enabled draft.
+
+## Analysis / design
 
 ```sh
-npm run stills
-npm run render -- --variant v1
-npm run render -- --variant v1 --props ./props.json --out ./out
+python -m venv --system-site-packages .venv
+.venv/bin/pip install -r scripts/analysis-requirements.txt
+npm run analyze
 ```
 
-`--props` accepte les champs du schema dans `src/experiments/hooks.ts`. `variant` doit être un identifiant simple, sans espace ni slash. V1 n’enregistre **qu’un hook**, `v1`. Pour les futurs A/B tests, ajouter une entrée à ce registre et conserver la même composition. Aucun autre film n’est construit.
+`scripts/analyze-audio.py` decodes the first 45 seconds, measures log-spectral flux, onsets, beats, likely bars, strongest transients and half-second RMS energy. It writes `design/beat-grid.json` and `design/beat-grid.md`. The source is 109.830385 seconds decoded; MP3 container duration is 109.871020 seconds. Tempo estimates: 133.636 BPM at hop resolution, 133.295 BPM by autocorrelation refinement. A possible half-time interpretation and inferred bar phase are documented, not hidden.
 
-## Intention / direction
+- `design/creative-direction.md`: living-margin concept, palette, typography, motion grammar and narrative limits.
+- `design/storyboard.md`: measured-state visual continuity and inspection frames.
+- `design/review.md`: checkpoint findings and changes.
+- `src/audio/beat-grid.ts`: typed named events derived from measured JSON, editorial offsets and master spec.
+- `src/design/tokens.ts`: palette, font, spacing, stroke, radii and motion vocabulary.
+- `experiments/hidden-clue-v2.json`: experiment metadata only; no analytics.
 
-Une enquête graphique semble rapprocher les pièces du téléphone, puis cache le détail au moment de la résolution. Palette graphite / ivoire / rouge contrôlé ; cover KAIROS conservée dans ses tons chauds. Fonte éditoriale forte, labels monospace, lignes fines, cadres, masques, fragments natifs et grain discret. Le mouvement révèle des relations : pas de montage de rushes, ni de faux chiffre de réussite ou d’urgence.
+## Props / variants
 
-| Beat           | Fenêtre indicative | Fonction visuelle                                                                                                                             |
-| -------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Hook           | 0–1,4 s            | « LE FILM AVAIT » puis le fragment « UN INDICE. », masqués typographiquement.                                                                 |
-| Fragments      | 1,4–4,4 s          | Rupture du titre ; date, crop de cover, waveform, fichier verrouillé, message ; une ligne les relie et une redaction interrompt la lecture.   |
-| Suspense       | 4,4–5,9 s          | Ralentissement ; cercle sur l’horloge ; « PERSONNE » puis « NE L’A REMARQUÉ. ».                                                               |
-| Reconstruction | 5,9–7,7 s          | 29 et 10 changent de place et de niveau, slash mobile, fermeture du cadenas, waveform aplatie ; redaction puis obstruction avant la solution. |
-| Question       | 7,7–9,5 s          | Cut sombre, « TU L’AS VU ? », puis uniquement `kairosarchives.com` comme CTA.                                                                 |
+The Zod schema and defaults live in `src/experiments/hooks.ts`. Keep `hookLine1`, `hookLine2`, `finalQuestion`, `cta`, `variant`, `suspenseLevel`. Audio properties choose the local analyzed master, start offset and gain. The art-directed V2 splits the default hook along semantic phrases; alternate text remains data and is not embedded as the main headline in JSX.
 
-Les phrases principales proviennent des props, pas du JSX. Les onsets et durées de mouvement sont centralisés dans `src/audio/timeline.ts`. Les composants ne lisent pas une horloge réelle : tout découle du frame Remotion. Les variations de texture sont déterministes.
-
-## Musique à fournir
-
-Déposer **un seul** fichier réel :
-
-```text
-public/assets/audio/master-track.wav
+```sh
+npm run render -- --props ./props.json
+npm run render:v1
 ```
 
-Extensions reconnues : `.wav`, `.mp3`, `.m4a`, `.aac`, `.ogg`. Le renderer le détecte automatiquement. Ou préciser `audioSrc: "assets/audio/master-track.wav"` dans les props. `audioOffsetSeconds` choisit le départ dans la piste, `audioGain` le gain. Un fondu final est prévu ; aucun SFX artificiel n’est ajouté.
+Do not change the V2 music without rerunning analysis and designing the synchronization. Gain is 0.65 to leave headroom on an over-full-scale decoded MP3; short frame-derived entry/exit de-click envelopes preserve the last actual hit. There are no invented sound effects or voiceovers.
 
-**En l’absence de master, la V1 est volontairement muette.** Les beats actuels sont des repères de mise en scène provisoires, pas une analyse musicale. La waveform est un élément graphique seeded, pas la représentation d’un audio absent. Après réception de la piste, analyser ses accents/silences puis adapter `beats`, `cues` et `durations` dans l’unique timeline. `@remotion/media-utils` pourra alors être ajouté pour une waveform réelle si nécessaire. Aucun package audio inutilisé n’est installé maintenant.
+## Structure / reuse
 
-## Organisation
+V2 reuses `ImageCrop`, `ConnectorLine`, `Lock`, `FilmGrain`, the props schema, composition registration and render/FFmpeg approach. Added `MorphFrame` (persistent changing edge), `MaskedType` (cropped typography), `EvidenceLabel` (shared annotation style) and `AudioTrace` (real PCM RMS window). Motion interpolation is stateless and lives in `src/motion/choreography.ts`. Every visual state derives from a Remotion frame. No runtime timers, unseeded randomness or CSS animations. No Three.js or extra animation engine.
 
-- `src/compositions/HiddenClueTrailer/` : orchestration, board d’indices et reconstruction.
-- `src/components/` : textes masqués, carte, redaction, waveform, connecteur, image crop, grain, cadenas et CTA.
-- `src/audio/timeline.ts` : beats, cues, durées et géométrie du master.
-- `src/motion/` : courbes, interpolation, reveal et bruit déterministe.
-- `src/experiments/hooks.ts` : schema Zod, props V1 et registre de variantes.
-- `scripts/render-variants.ts` : bundle, PNGs, contrôle de déterminisme, rendu et finalisation FFmpeg.
-- `scripts/check-output.ts` : contrôle technique du MP4 et des assets.
+V1 remains preserved in Git history at `3a6908e`; its legacy render/check scripts are retained for the prototype. V1's synthetic waveform and implied clock detail are not used in V2. V2 contains no film footage, no fabricated private messages, no solved password or unsupported film explanation.
 
-## Assets / validation
+## Asset provenance / licenses
 
-La cover et les deux icônes sont des copies locales exactes des assets existants du projet KAIROS ; leur provenance et SHA-256 figurent dans `public/assets/manifest.json`. Les fontes DejaVu sont locales et leur licence est jointe. Les autres interfaces et symboles sont dessinés en HTML/SVG, sans captures génériques ni faux médias externes. Les répertoires SFX/textures sont prêts mais ne déclenchent aucun chargement fantôme.
+Cover and phone assets are independent local copies; `public/assets/manifest.json` records provenance and SHA-256. Geist is locally hosted with its OFL; V1's DejaVu license is also bundled. The real audio is `public/assets/audio/tension-suspense.mp3`, SHA-256 recorded in the analysis. Source metadata credits **Music: Violation by Soundridemusic**, https://youtu.be/tT35z4DZb3M. Preserve this credit in publication captions; the video itself has only the requested domain CTA.
 
-Le renderer compare deux PNG du même frame et échoue s’ils diffèrent. `npm run check` vérifie props, marqueurs, absence de Date.now/Math.random/CSS animations temporelles, empreintes des assets, dimensions, fps, nombre de frames, durée, codec et présence/absence d’audio cohérente avec le master fourni. Les cinq images de contrôle couvrent les beats principaux ; elles sont inspectées pour la lisibilité et les masques.
-
-L’aperçu muet permet de juger la chorégraphie. Le rythme final et le mix ne peuvent être validés qu’avec la vraie piste. Aucun déploiement ou changement au site de production n’est effectué.
+Official Remotion Agent Skills were installed with `npx remotion skills add`, and the create, markup, studio, render, docs and best-practices guidance was consulted. No platform analytics, external collection, production deployment or merge into main is part of this project.

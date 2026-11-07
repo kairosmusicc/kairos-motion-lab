@@ -1,0 +1,5 @@
+import React from 'react';
+import {tokens as T} from '../design/tokens';
+import {clamp,arrest} from '../motion/choreography';
+/** Crop typography along its own baseline; letter cadence shares one reveal. */
+export const MaskedType:React.FC<{text:string;progress:number;size:number;width?:number;outline?:boolean;style?:React.CSSProperties;stagger?:boolean}> = ({text,progress,size,width,outline=false,style,stagger=false}) => <div style={{overflow:'hidden',clipPath:'inset(0)',opacity:progress<=0?0:1,width,paddingBottom:size*.09,...style}}><div style={{fontFamily:T.font.display,fontWeight:650,fontSize:size,lineHeight:.98,letterSpacing:'-.055em',whiteSpace:'nowrap',color:outline?'transparent':'inherit',WebkitTextStroke:outline?`2px ${T.color.bone}`:undefined,transform:stagger?undefined:`translateY(${(1-progress)*112}%)`}}>{stagger?Array.from(text).map((c,i)=><span key={i} style={{display:'inline-block',whiteSpace:'pre',transform:`translateY(${(1-arrest(clamp(progress*1.35-i/Math.max(text.length,1)*.35)))*112}%)`}}>{c}</span>):text}</div></div>;

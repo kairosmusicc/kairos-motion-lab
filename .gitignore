@@ -5,3 +5,8 @@ out/*
 !out/.gitkeep
 .env*
 *.log
+
+.venv/
+__pycache__/
+*.pyc
+.agents/

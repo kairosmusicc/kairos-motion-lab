@@ -1,0 +1,11 @@
+{
+  "hook_family": "hidden-clue",
+  "hook_text": ["LE FILM AVAIT UN INDICE.", "PERSONNE NE L'A REMARQUÉ."],
+  "duration": 44.8,
+  "first_major_reveal": 6.335601,
+  "final_cta": "kairosarchives.com",
+  "psychological_mechanisms": ["information gap", "open loop", "Gestalt completion", "prediction error", "repetition with mutation", "variable information density"],
+  "audio_track": "assets/audio/tension-suspense.mp3",
+  "variant_id": "v2",
+  "note": "No analytics or external event collection. Visual evidence does not assert an explanation of the film."
+}

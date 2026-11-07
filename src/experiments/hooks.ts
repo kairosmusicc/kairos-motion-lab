@@ -13,6 +13,17 @@ export const hiddenClueSchema = z.object({
 export type HiddenClueProps = z.infer<typeof hiddenClueSchema>;
 /** Only one creative variant is produced in V1. Future hooks belong in this registry. */
 export const variants: Record<string, HiddenClueProps> = {
+  v2: {
+    hookLine1: "LE FILM AVAIT UN INDICE.",
+    hookLine2: "PERSONNE NE L'A REMARQUÉ.",
+    finalQuestion: "TU L'AS VU ?",
+    cta: "kairosarchives.com",
+    suspenseLevel: 0.8,
+    variant: "v2",
+    audioSrc: "assets/audio/tension-suspense.mp3",
+    audioOffsetSeconds: 0,
+    audioGain: 0.65,
+  },
   v1: {
     hookLine1: "LE FILM AVAIT UN INDICE.",
     hookLine2: "PERSONNE NE L'A REMARQUÉ.",

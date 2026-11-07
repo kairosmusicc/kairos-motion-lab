@@ -1,18 +1,25 @@
 {
   "name": "kairos-motion-lab",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "typecheck": "tsc --noEmit",
-    "render": "tsx scripts/render-variants.ts",
-    "stills": "tsx scripts/render-variants.ts --stills-only",
-    "check": "tsx scripts/check-output.ts"
+    "render": "node --import tsx scripts/render-v2.ts",
+    "stills": "node --import tsx scripts/render-v2.ts --stills-only",
+    "check": "node --import tsx scripts/check-v2.ts",
+    "draft": "node --import tsx scripts/render-v2.ts --draft",
+    "render:v1": "node --import tsx scripts/render-variants.ts --variant v1",
+    "analyze": ".venv/bin/python scripts/analyze-audio.py",
+    "check:v2": "node --import tsx scripts/check-v2.ts",
+    "check:v1": "node --import tsx scripts/check-output.ts"
   },
   "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
     "@remotion/bundler": "4.0.541",
     "@remotion/cli": "4.0.541",
+    "@remotion/media": "4.0.541",
     "@remotion/renderer": "4.0.541",
     "react": "19.2.0",
     "react-dom": "19.2.0",

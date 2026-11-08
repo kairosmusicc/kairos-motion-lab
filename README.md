@@ -1,4 +1,52 @@
-# KAIROS MOTION LAB
+# KAIROS MOTION LAB — V3
+
+The latest composition is **HiddenClueTrailer-v3**, a film-derived vertical teaser. It preserves the Remotion engine and older compositions but replaces V2's archive/phone-fiction direction with genuine film images: wrist, message, journey, train windows, perceptual rupture and consultation. The picture ends with **Regarde encore.** Target: https://www.instagram.com/reel/DfFiuwHIyyN/ (kept in metadata and caption, not printed as a long URL in the video).
+
+## V3 commands
+
+```sh
+npm install
+npm run prepare:v3
+npm run typecheck
+npm run studio -- --no-open
+export REMOTION_BROWSER_EXECUTABLE=/usr/bin/chromium
+npm run stills:v3
+npm run draft:v3
+npm run check:v3 -- out/HiddenClueTrailer-v3-draft.mp4
+npm run render:v3
+npm run check:v3
+```
+
+Chromium is the explicitly user-authorized fallback in this managed environment. On an unrestricted machine, omit the environment variable to use Remotion's bundled browser. Remotion 4.0.541 / React / TypeScript; no new animation engine or 3D library.
+
+Final spec: 1080×1920 / 30fps / 44.8s / H.264 yuv420p limited-range Rec.709 + real AAC soundtrack. Master uses PNG intermediate frames. FFmpeg finalizes faststart; film audio is muted in both prepared assets and composition. The suspense master is SHA-256 checked before rendering, then compared against the decoded MP4 audio. No silent placeholder is permitted.
+
+### V3 deliverables
+
+- `out/HiddenClueTrailer-v3.mp4`
+- `out/HiddenClueTrailer-v3-draft.mp4`
+- `out/HiddenClueTrailer-v3-beat-board.png`
+- `out/HiddenClueTrailer-v3-storyboard.png` — source frames with local file timecodes.
+- `out/HiddenClueTrailer-v3-caption.txt` — actual destination link for publication.
+- Manifests and validation JSON next to the MP4s.
+
+### Source truth / design
+
+- `design/v3/creative-direction.md`, `storyboard.md`, `beat-grid.md` / `.json`, `review.md`.
+- `design/v3/source-moments.json`: exact source file in/out, descriptive content, original/derived SHA-256 and macro crop provenance.
+- `src/audio/v3-timeline.ts`: named events from the already-analyzed real master, not invented beats.
+- `src/compositions/HiddenClueTrailerV3/`: FilmWindow (shared video/crop clock), Dial (watch-derived geometry), props and orchestration.
+- `scripts/prepare-v3-sources.py`: short silent crops from supplied footage. Source files are never overwritten.
+
+The proxy's picture is 81.9s, while its audio/container extends to 82.801s; late story material comes from the complementary excerpts. Do not infer scene identity from file names: `watch.mp4` is mostly waking/departure and `train.mp4` is the outdoor rupture. Actual train and notification shots come from the proxy. All quoted dialogue was verified on a real frame; no private conversation, diagnosis or hidden code was invented.
+
+The separate Guess watch photograph and screen-recorded motion reference were not supplied in the checked workspace/repository. V3 uses the actual filmed wrist; no substitute product image was generated. The available artist logo is copied unchanged under `public/assets/branding/`, but the picture uses only a small text credit for visual restraint. `public/assets/references/README.md` records the missing optional references. The project stays independent of kairos-experience at runtime, and that repository is unchanged.
+
+V1/V2 are retained. Their original default `render`, `draft`, `stills`, `check` commands still target V2: use the explicit `*:v3` commands above for the latest piece.
+
+---
+
+# V2 preserved documentation
 
 Independent React / TypeScript / Remotion studio. **V2: HiddenClueTrailer-v2**, 1080×1920, 30fps, 1344 frames / 44.800 seconds. V1 remains under the Studio `Prototype` folder, with its original code and 9.5-second timeline. This repository never imports runtime assets from kairos-experience and does not modify that project.
 

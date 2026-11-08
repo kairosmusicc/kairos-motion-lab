@@ -1,0 +1,139 @@
+{
+  "pictureProxyDuration": 81.9,
+  "proxyContainerDuration": 82.800998,
+  "verifiedMessageFragment": "j'ai besoin de te dire un truc",
+  "quoteSource": "court-metrage-proxy.mp4 @ 70.0s",
+  "missingReferences": [
+    "separate Guess watch photograph",
+    "screen-recorded motion reference"
+  ],
+  "shots": [
+    {
+      "id": "watch",
+      "source": "public/assets/film/journey.mp4",
+      "sourceIn": 10.1,
+      "sourceOut": 13.4,
+      "description": "Overhead table, real wristwatch, cup and phone",
+      "sourceSha256": "19221a813cbb2ff0d5f862ae210e08b62509f755b01979615b7838f2a7731b48",
+      "derived": "assets/film/v3/watch.mp4",
+      "derivedSha256": "3400d10108581f07bb4af3ed37fe9ae65db07dfa43bd1ec735e75da9539990ae",
+      "subtitleCrop": false,
+      "usedInPicture": true,
+      "retainedHeightFraction": 1,
+      "posterTime": 12.0
+    },
+    {
+      "id": "walk",
+      "source": "public/assets/film/message.mp4",
+      "sourceIn": 1.5,
+      "sourceOut": 5.5,
+      "description": "Walking figure between trees and bollards",
+      "sourceSha256": "89f9ab21cb4f155457de45c612725efdedf9c4842ea4c1b423df282e47bed1db",
+      "derived": "assets/film/v3/walk.mp4",
+      "derivedSha256": "7b42131703cf1b451776889757a924dfde741e4d12c242a48d88662a686d6673",
+      "subtitleCrop": true,
+      "usedInPicture": true,
+      "retainedHeightFraction": 0.8,
+      "posterTime": 1.9
+    },
+    {
+      "id": "phone",
+      "source": "public/assets/film/court-metrage-proxy.mp4",
+      "sourceIn": 68.9,
+      "sourceOut": 71.9,
+      "description": "Station close face and actual message overlay",
+      "sourceSha256": "f9c890e884ac93fb9b6458b7685ce49b94a6630a58f29d8b80db46b3d366e44d",
+      "derived": "assets/film/v3/phone.mp4",
+      "derivedSha256": "f137a015c8f55a6a503def877dbbb2ac31efd872e68a5cf2c9b25bf6be0184cc",
+      "subtitleCrop": true,
+      "usedInPicture": true,
+      "retainedHeightFraction": 0.8,
+      "posterTime": 70.0
+    },
+    {
+      "id": "departure",
+      "source": "public/assets/film/journey.mp4",
+      "sourceIn": 0.2,
+      "sourceOut": 3.6,
+      "description": "Street face and doorway",
+      "sourceSha256": "19221a813cbb2ff0d5f862ae210e08b62509f755b01979615b7838f2a7731b48",
+      "derived": "assets/film/v3/departure.mp4",
+      "derivedSha256": "11af02c6dbddf90fdc014492fabc37123ea739297ff331760cc7026cb1ce8a83",
+      "subtitleCrop": true,
+      "usedInPicture": true,
+      "retainedHeightFraction": 0.8,
+      "posterTime": 0.6
+    },
+    {
+      "id": "train",
+      "source": "public/assets/film/court-metrage-proxy.mp4",
+      "sourceIn": 57,
+      "sourceOut": 64,
+      "description": "Real carriage, vertical rails and doorway",
+      "sourceSha256": "f9c890e884ac93fb9b6458b7685ce49b94a6630a58f29d8b80db46b3d366e44d",
+      "derived": "assets/film/v3/train.mp4",
+      "derivedSha256": "7c2b519eee67fb9cbd57753362646a26c2c227eae424f9da445818e496a08d63",
+      "subtitleCrop": true,
+      "usedInPicture": true,
+      "retainedHeightFraction": 0.8,
+      "posterTime": 59.0
+    },
+    {
+      "id": "slip",
+      "source": "public/assets/film/train.mp4",
+      "sourceIn": 3.1,
+      "sourceOut": 6.1,
+      "description": "Original outdoor perceptual rupture, not a train shot",
+      "sourceSha256": "24dd9909fbeeb805cd802ae6ed94059c730f7714b54534617f0d59ac2599135e",
+      "derived": "assets/film/v3/slip.mp4",
+      "derivedSha256": "14177902d457ff36ce3a8f1370dd241d6297dcc8ab55ca95468fb55a491976bb",
+      "subtitleCrop": true,
+      "usedInPicture": true,
+      "retainedHeightFraction": 0.8,
+      "posterTime": 3.5
+    },
+    {
+      "id": "cabinet",
+      "source": "public/assets/film/cabinet.mp4",
+      "sourceIn": 1.1,
+      "sourceOut": 5.7,
+      "description": "Consultation wide shot, candle and foreground wrist",
+      "sourceSha256": "61c852035533a132dc76b13697402c1f8eb3aed6b7f167e08f9dcc8198c21b16",
+      "derived": "assets/film/v3/cabinet.mp4",
+      "derivedSha256": "59cbc0fdca0baecadad0e0033c6e5cc4181cf7cfe88b1fadbbcc1b6f0302dac8",
+      "subtitleCrop": true,
+      "usedInPicture": true,
+      "retainedHeightFraction": 0.8,
+      "posterTime": 1.5
+    },
+    {
+      "id": "face",
+      "source": "public/assets/film/rupture.mp4",
+      "sourceIn": 5.5,
+      "sourceOut": 9.5,
+      "description": "Consultation close-up",
+      "sourceSha256": "ff0ef6a6b01aa5d4a19d2e63ebfb8594c8c7f92f1be12d821c0928f5dac46cea",
+      "derived": "assets/film/v3/face.mp4",
+      "derivedSha256": "5b301511196080fe89fd163c3c6ac731e4c7da17a700ad3d12657e28b8032a72",
+      "subtitleCrop": true,
+      "usedInPicture": true,
+      "retainedHeightFraction": 0.8,
+      "posterTime": 5.9
+    }
+  ],
+  "derivedCrops": [
+    {
+      "asset": "assets/film/v3/watch-detail.mp4",
+      "parent": "assets/film/v3/watch.mp4",
+      "parentIn": 1.6,
+      "duration": 1.6,
+      "crop": [
+        155,
+        610,
+        340,
+        340
+      ],
+      "note": "Actual filmed wrist, no stock Guess substitute."
+    }
+  ]
+}

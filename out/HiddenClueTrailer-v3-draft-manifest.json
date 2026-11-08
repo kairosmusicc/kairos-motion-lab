@@ -1,0 +1,44 @@
+{
+  "composition": "HiddenClueTrailer-v3",
+  "props": {
+    "hookLine1": "LE FILM AVAIT UN INDICE.",
+    "hookLine2": "PERSONNE NE L'A REMARQUÉ.",
+    "finalQuestion": "TU CROIS AVOIR COMPRIS ?",
+    "cta": "REGARDE ENCORE.",
+    "variant": "v3",
+    "suspenseLevel": 0.75,
+    "destination": "https://www.instagram.com/reel/DfFiuwHIyyN/"
+  },
+  "spec": {
+    "fps": 30,
+    "width": 1080,
+    "height": 1920,
+    "frames": 1344,
+    "end": 44.8
+  },
+  "cue": {
+    "hook": 0,
+    "hookImpact": 0.638549,
+    "second": 2.763719,
+    "watch": 5.437642,
+    "message": 10.236735,
+    "journey": 15.943764,
+    "train": 19.834921,
+    "recall": 24.045351,
+    "split": 25.54195,
+    "rupture": 27.936508,
+    "slip": 29.433107,
+    "echo": 31.837642,
+    "cabinet": 33.643537,
+    "face": 35.140136,
+    "return": 37.544671,
+    "question": 39.031293,
+    "clear": 40.837188,
+    "cta": 42.333787,
+    "ctaDetail": 43.840363,
+    "lastHit": 44.738322
+  },
+  "sourceMoments": "design/v3/source-moments.json",
+  "audioSha256": "2a7e575b7f827e3db33dca0d973641c040500170fe2246747d236cbab242d00b",
+  "destination": "https://www.instagram.com/reel/DfFiuwHIyyN/"
+}

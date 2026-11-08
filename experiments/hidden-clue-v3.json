@@ -1,0 +1,21 @@
+{
+  "variant_id": "v3",
+  "hook_family": "short-film-rewatch",
+  "hook_text": [
+    "Le film avait un indice.",
+    "Personne ne l’a remarqué."
+  ],
+  "duration": 44.8,
+  "first_major_reveal": 0.638549,
+  "final_cta": "Regarde encore.",
+  "destination": "https://www.instagram.com/reel/DfFiuwHIyyN/",
+  "psychological_mechanisms": [
+    "information gap",
+    "recurring motif recognition",
+    "unfinished mental loop",
+    "selective attention",
+    "delayed payoff"
+  ],
+  "audio_track": "assets/audio/tension-suspense.mp3",
+  "source_moments": "design/v3/source-moments.json"
+}

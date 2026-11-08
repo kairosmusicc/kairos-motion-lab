@@ -1,6 +1,6 @@
 {
   "name": "kairos-motion-lab",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,7 +13,12 @@
     "render:v1": "node --import tsx scripts/render-variants.ts --variant v1",
     "analyze": ".venv/bin/python scripts/analyze-audio.py",
     "check:v2": "node --import tsx scripts/check-v2.ts",
-    "check:v1": "node --import tsx scripts/check-output.ts"
+    "check:v1": "node --import tsx scripts/check-output.ts",
+    "prepare:v3": "python scripts/prepare-v3-sources.py",
+    "render:v3": "node --import tsx scripts/render-v3.ts",
+    "draft:v3": "node --import tsx scripts/render-v3.ts --draft",
+    "stills:v3": "node --import tsx scripts/render-v3.ts --stills-only",
+    "check:v3": "node --import tsx scripts/check-v3.ts"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.3.0",

@@ -40,7 +40,9 @@ Final spec: 1080×1920 / 30fps / 44.8s / H.264 yuv420p limited-range Rec.709 + r
 
 The proxy's picture is 81.9s, while its audio/container extends to 82.801s; late story material comes from the complementary excerpts. Do not infer scene identity from file names: `watch.mp4` is mostly waking/departure and `train.mp4` is the outdoor rupture. Actual train and notification shots come from the proxy. All quoted dialogue was verified on a real frame; no private conversation, diagnosis or hidden code was invented.
 
-The separate Guess watch photograph and screen-recorded motion reference were not supplied in the checked workspace/repository. V3 uses the actual filmed wrist; no substitute product image was generated. The available artist logo is copied unchanged under `public/assets/branding/`, but the picture uses only a small text credit for visual restraint. `public/assets/references/README.md` records the missing optional references. The project stays independent of kairos-experience at runtime, and that repository is unchanged.
+The supplied Guess photograph and motion reference are now fetched from origin/motion-v2 (b565a8b). The photo provides a four-sector metal bezel around genuine film footage; its product calendar and hand reading are masked, never used as invented clues. The motion recording guides semantic transforms, foreground masks and hierarchy; none of its footage appears in the teaser. Original hashes and roles are in `design/v3/references.json`. The artist logo matches the existing local copy; the picture retains only a small text credit. The project stays independent of kairos-experience at runtime, and that repository is unchanged.
+
+HQ excerpts are used wherever available. Only the actual carriage and station notification remain proxy-sourced: no equivalent HQ views exist among the supplied files. HQ train.mp4 contains the outdoor rupture rather than the carriage. These two source-quality exceptions are documented explicitly.
 
 V1/V2 are retained. Their original default `render`, `draft`, `stills`, `check` commands still target V2: use the explicit `*:v3` commands above for the latest piece.
 

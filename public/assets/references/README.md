@@ -1,7 +1,9 @@
-# Optional V3 visual references
+# V3 supplied references
 
-The separate Guess watch photograph and screen-recorded motion reference were not present in the local workspace or fetched repository when V3 was built. No substitute image was invented. V3 uses the genuine wristwatch filmed in journey.mp4 at 10.1–13.4s (macro 11.7–13.3s).
+Fetched from origin/motion-v2 after the user's path clarification (source commit b565a8b):
 
-If supplied later, keep the original reference here, for example watch-guess.png and motion-reference.mp4. Do not claim an exact Guess dial reading or reproduce unseen reference details. No runtime path points to these absent files.
+- watch-guess.webp: original 1080×1437 Guess photograph. The composition samples the outer metal/markers as a four-sector bezel around genuine film footage. Its product calendar, brand lettering and hand reading are inside the transparent opening, never substituted for a film clue.
+- motion-reference.mp4: 19.983s, 1080×544, 60fps screen recording. Studied for object continuity, masks, layering and typographic hierarchy. No frame or audio from this reference appears in the teaser.
+- ../branding/paapii-manii-logo.png: supplied artist mark matches the existing local copy. The restrained end card keeps a small typographic artist credit instead of the blue illustrated mark.
 
-The available Paapii & Manii logo was copied unchanged into ../branding/paapii-manii-logo.png from the existing local project. It is not used in the restrained V3 picture; only a small typographic artist credit appears.
+Hashes, roles and analysis are recorded in design/v3/references.json. The initial V3 review correctly records that these references were unavailable in that earlier checkout; they are now integrated. Source film files are unchanged.

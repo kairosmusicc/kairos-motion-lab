@@ -7,6 +7,7 @@ import {MaskedType} from '../../components/MaskedType';
 import {FilmGrain} from '../../components/FilmGrain';
 import {FilmWindow} from './FilmWindow';
 import {Dial} from './Dial';
+import {WatchBezel} from './WatchBezel';
 import {V3Props} from './props';
 export {v3Schema} from './props';
 const ink='#0b0d0c',white='#f2efe7',gold='#c8b18b';
@@ -25,7 +26,9 @@ export const HiddenClueTrailerV3:React.FC<V3Props> = (props)=>{
  const questionWords=props.finalQuestion.split(' '),questionLead=questionWords.slice(0,-2).join(' '),questionTail=questionWords.slice(-2).join(' ');
  const firstWord=props.hookLine2.split(' ')[0],rest=props.hookLine2.split(' ').slice(1).join(' ');
  const shutter=(at:number,width:number)=>{
-  const p=progress(t,at,.48);return p>0&&p<1?<div key={at} style={{position:'absolute',left:-width+(1080+width)*p,top:580,width,height:1040,background:ink,transform:'skewX(-7deg)'}}/>:null;
+  const p=progress(t,at,.48);
+  if(at===C.cabinet)return p>0&&p<1?<div key={at} style={{position:'absolute',left:84,top:380+p*1130,width:912,height:110,background:ink}}/>:null;
+  return p>0&&p<1?<div key={at} style={{position:'absolute',left:-width+(1080+width)*p,top:580,width,height:1040,background:ink,transform:'skewX(-7deg)'}}/>:null;
  };
  return <AbsoluteFill style={{background:ink,color:white,fontFamily:'Geist',overflow:'hidden'}}>
   <style>{`@font-face{font-family:Geist;src:url('${staticFile('assets/fonts/Geist-Variable.woff2')}') format('woff2');font-weight:100 900;font-display:block}`}</style>
@@ -42,6 +45,7 @@ export const HiddenClueTrailerV3:React.FC<V3Props> = (props)=>{
    <MaskedType text={rest.split(' ').slice(0,2).join(' ')} progress={enter(t,C.second+.3,.35)} size={110} width={920} style={{marginTop:25}}/>
    <MaskedType text={rest.split(' ').slice(2).join(' ')} progress={enter(t,C.second+.6,.4)} size={139} width={930} style={{marginTop:8}}/>
   </div>
+  <WatchBezel time={t} start={C.hookImpact} release={C.second-.1} cx={780} cy={1250} radius={235} strength={.8}/>
   {/* Circle/rim is the connective graphic organism. */}
   <div style={{opacity:alive}}>
    <FilmWindow name="Time — wrist in context" shot="watch" start={C.watch} end={C.message+.35} rate={.62} pose={{x:540-pose(t,[[C.watch-.1,260],[C.watch,912]])/2,y:1000-pose(t,[[C.watch-.1,260],[C.watch,912]])/2,w:pose(t,[[C.watch-.1,260],[C.watch,912]]),h:pose(t,[[C.watch-.1,260],[C.watch,912]]),radius:456,objectX:37}}/>
@@ -71,7 +75,9 @@ export const HiddenClueTrailerV3:React.FC<V3Props> = (props)=>{
    <FilmWindow name="Cabinet — closer" shot="face" start={C.face} end={C.clear+.2} rate={.65} pose={{x:pose(t,[[C.face-.1,1080],[C.face,410],[C.question,500]]),y:pose(t,[[C.face,800],[C.return,760],[C.question,1000]]),w:586,h:790,radius:pose(t,[[C.face,8],[C.question,300]]),objectX:15,scale:1.03,opacity:1-enter(t,C.clear,.3)}}/>
    <FilmWindow name="Return — wrist remembered" shot="watch-detail" start={C.return} end={C.question+.15} rate={.65} pose={{x:84,y:450,w:350,h:350,radius:200,objectX:50,scale:1.02,opacity:1-enter(t,C.question,.2)}}/>
    <Dial cx={circleX} cy={circleY} radius={radius} open={enter(t,0,.6)} straighten={straight} opacity={(1-enter(t,C.message,.2)+enter(t,C.journey,.3))*r(t,[[0,.85],[C.message,0],[C.journey,.65],[C.train,.4],[C.rupture,.65],[C.cabinet,.3],[C.face,.15],[C.question,.15]])} rotation={r(t,[[0,-18],[C.watch,40],[C.message,70],[C.journey,120],[C.rupture,185],[C.cabinet,210]])}/>
-   {[C.message,C.train,C.split,C.slip,C.cabinet].map(hit=>shutter(hit,180))}
+   <WatchBezel time={t} start={C.watch} release={C.message} cx={540} cy={1000} radius={pose(t,[[C.watch-.1,140],[C.watch,466]])}/>
+   <WatchBezel time={t} start={C.return} release={C.question} cx={259} cy={625} radius={178} strength={.75}/>
+   {[C.train,C.cabinet].map(hit=>shutter(hit,180))}
   </div>
   {/* End: viewer-directed question, then a clear Instagram action; URL lives in delivery metadata. */}
   <div style={{position:'absolute',left:84,top:350,opacity:after*(1-enter(t,C.cta,.24))}}>

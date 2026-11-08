@@ -17,5 +17,7 @@
     "delayed payoff"
   ],
   "audio_track": "assets/audio/tension-suspense.mp3",
-  "source_moments": "design/v3/source-moments.json"
+  "source_moments": "design/v3/source-moments.json",
+  "reference_revision": "supplied-watch-and-motion-reference",
+  "references": "design/v3/references.json"
 }

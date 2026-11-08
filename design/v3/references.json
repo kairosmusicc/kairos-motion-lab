@@ -1,0 +1,49 @@
+{
+  "retrievedFrom": "origin/motion-v2",
+  "sourceCommit": "b565a8b",
+  "assets": [
+    {
+      "path": "public/assets/references/watch-guess.webp",
+      "sha256": "6e8c0b570996b22c2dcefb9bdd04321fb01bb5f72bcd43d4c0a7570417caff33",
+      "role": "Graphic bezel material; calendar/brand/hand reading masked; not a photographed film frame",
+      "usedInPicture": true
+    },
+    {
+      "path": "public/assets/references/motion-reference.mp4",
+      "sha256": "66966727099597714caa048082f79a80932006a814a447b74abcd82d7df05b7b",
+      "role": "Style reference only: semantic object continuity, occlusion, hierarchy; never used as footage",
+      "usedInPicture": false
+    },
+    {
+      "path": "public/assets/branding/paapii-manii-logo.png",
+      "sha256": "83dee2fde81f66d7990ae450069611ec09d6b2c2b0ba66efc3a37813a935a879",
+      "role": "Provided original artist mark; small text credit retained instead of the blue illustrated raster",
+      "usedInPicture": false
+    }
+  ],
+  "styleReferenceDuration": 19.983333,
+  "styleReferenceDimensions": [
+    1080,
+    544
+  ],
+  "watchDimensions": [
+    1080,
+    1437
+  ],
+  "observations": [
+    "semantic object transformations instead of successive unrelated cards",
+    "occlusion conceals content replacement",
+    "strong foreground/background hierarchy",
+    "typographic restraint during dense image sequences"
+  ],
+  "notCopied": [
+    "Hormozi footage",
+    "money claims",
+    "brain/eye/ear imagery",
+    "red/cyan effects"
+  ],
+  "proxyExceptions": [
+    "Real carriage exists only in court-metrage-proxy.mp4 at 57\u201364s; supplied HQ train.mp4 actually contains the outdoor rupture",
+    "Station notification exists only in court-metrage-proxy.mp4 at 68.9\u201371.9s; other moments use supplied HQ excerpts"
+  ]
+}

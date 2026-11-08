@@ -8,6 +8,8 @@ const hash=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex'
 const source=JSON.parse(readFileSync('design/v3/source-moments.json','utf8'));
 for(const shot of source.shots){assert.equal(hash(shot.source),shot.sourceSha256);assert.equal(hash(`public/${shot.derived}`),shot.derivedSha256);}
 assert.equal(hash('public/assets/audio/tension-suspense.mp3'),grid.sha256);
+const references=JSON.parse(readFileSync('design/v3/references.json','utf8'));
+for(const ref of references.assets)assert.equal(hash(ref.path),ref.sha256);
 assert(Object.values(cue).every(t=>t>=0&&t<V3.end));
 const code=readFileSync('src/compositions/HiddenClueTrailerV3/HiddenClueTrailerV3.tsx','utf8');
 assert(!/ABEG|1029|02:43|tout_gacher|kairosarchives\.com|Date\.now\(|Math\.random\(|@keyframes/.test(code));
@@ -22,5 +24,5 @@ const pcm=(p:string)=>execFileSync('ffmpeg',['-v','error','-i',p,'-vn','-ac','1'
 const a=pcm(file),b=pcm('public/assets/audio/tension-suspense.mp3'),av=new Float32Array(a.buffer,a.byteOffset,a.length/4),bv=new Float32Array(b.buffer,b.byteOffset,b.length/4);let aa=0,bb=0,ab=0;
 for(let i=8000;i<Math.min(av.length,bv.length)-8000;i++){aa+=av[i]*av[i];bb+=bv[i]*bv[i];ab+=av[i]*bv[i];}
 const correlation=ab/Math.sqrt(aa*bb);assert(correlation>.99);
-const report={file,duration:Number(probe.format.duration),bytes:statSync(file).size,width:video.width,height:video.height,fps:30,frames:1344,videoCodec:video.codec_name,pixelFormat:video.pix_fmt,colorSpace:video.color_space,colorRange:video.color_range,audioCodec:audio.codec_name,masterPcmCorrelation:correlation,masterSha256:grid.sha256,destination:reelUrl,remotion:'4.0.541',sourceMoments:'design/v3/source-moments.json',sha256:hash(file)};
+const report={file,duration:Number(probe.format.duration),bytes:statSync(file).size,width:video.width,height:video.height,fps:30,frames:1344,videoCodec:video.codec_name,pixelFormat:video.pix_fmt,colorSpace:video.color_space,colorRange:video.color_range,audioCodec:audio.codec_name,masterPcmCorrelation:correlation,masterSha256:grid.sha256,destination:reelUrl,remotion:'4.0.541',sourceMoments:'design/v3/source-moments.json',references:'design/v3/references.json',sha256:hash(file)};
 writeFileSync(file.replace('.mp4','-validation.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));

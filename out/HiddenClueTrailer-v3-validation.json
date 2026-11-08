@@ -1,7 +1,7 @@
 {
   "file": "out/HiddenClueTrailer-v3.mp4",
   "duration": 44.8,
-  "bytes": 15537243,
+  "bytes": 15619703,
   "width": 1080,
   "height": 1920,
   "fps": 30,
@@ -16,5 +16,6 @@
   "destination": "https://www.instagram.com/reel/DfFiuwHIyyN/",
   "remotion": "4.0.541",
   "sourceMoments": "design/v3/source-moments.json",
-  "sha256": "6f511834e07a90eec7bca79147c8619a764f6031b48afc346084e890768c0243"
+  "references": "design/v3/references.json",
+  "sha256": "c050b12af50742f87b2f773c21e3d4b98474bbe2e2de3868143c8e0918d32ca7"
 }

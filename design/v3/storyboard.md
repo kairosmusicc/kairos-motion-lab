@@ -2,7 +2,7 @@
 
 | Output | Visual action | Actual source / editorial purpose |
 |---|---|---|
-| 0–2.76 | Immediate large “LE FILM AVAIT / UN INDICE.”; a moving circular fragment shows the wrist and table. | journey 10.1–13.4s; seed the time motif without assigning a code. |
+| 0–2.76 | Immediate large “LE FILM AVAIT / UN INDICE.”; a moving circular fragment shows the wrist and table. | journey 10.1–12.8s; seed the time motif without assigning a code. |
 | 2.76–5.44 | Typography is pushed behind an expanding window. “PERSONNE / NE L'A REMARQUÉ.” replaces it, not a black title card. | Real train doorway from proxy 57–64s gives a sharp second fragment. |
 | 5.44–10.24 | Circle opens, wrist/table become a larger horizontal film window; the perimeter becomes lines. | Real watch moment; crop moves to show context rather than fake luxury product photography. |
 | 10.24–15.94 | Message window and real face share the composition. A verified sentence fragment enters across two short lines. | proxy 68.9–71.9s; do not reconstruct a fake conversation. |

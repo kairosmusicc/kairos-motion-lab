@@ -40,5 +40,7 @@
   },
   "sourceMoments": "design/v3/source-moments.json",
   "audioSha256": "2a7e575b7f827e3db33dca0d973641c040500170fe2246747d236cbab242d00b",
+  "references": "design/v3/references.json",
+  "colorSpace": "bt709",
   "destination": "https://www.instagram.com/reel/DfFiuwHIyyN/"
 }
